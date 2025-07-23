@@ -7,6 +7,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/projectdiscovery/gologger"
 )
 
 // Legacy Seperator (i.e `;`) is used as seperator for parameters
@@ -163,6 +165,7 @@ func ParamEncode(data string) string {
 // URLEncodeWithEscapes URL encodes data with given special characters escaped (similar to burpsuite intruder)
 // Note `MustEscapeCharSet` is not included
 func URLEncodeWithEscapes(data string, charset ...rune) string {
+	gologger.Debug().Msgf("mjkim - URLEncodeWithEscapes - data: %s , charset: %s", data, charset)
 	mustescape := getrunemap(charset)
 	var buff bytes.Buffer
 	// In any case
